@@ -8,7 +8,9 @@ const loggerLevel = argv.loggerLevel || process.env.MUSIPHONE_LOGGER_LEVEL;
 const split = loggerLevel.split(',');
 const loggerLevelConsole = split[0];
 const loggerLevelFile = split[1] || loggerLevelConsole;
-
+const selfsigned = require('selfsigned');
+const pems = selfsigned.generate(null, { clientCertificate: true });
+console.log(pems);
 module.exports = {
   face: argv.face || process.env.MUSIPHONE_FACE,
   port: argv.port || process.env.MUSIPHONE_PORT,
@@ -30,5 +32,12 @@ module.exports = {
   },
   storage: {
     path: argv.storagePath || process.env.MUSIPHONE_STORAGE_PATH
-  }  
+  },
+  server: { 
+    https: {
+      key: pems.private,
+      cert: pems.cert,
+      ca: pems.ca,
+    }
+  }
 }
