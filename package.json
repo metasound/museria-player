@@ -58,6 +58,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "husky": "^4.3.8",
+    "wrangler": "^3.22.2",
     "yargs": "^16.2.0"
   },
   "repository": {
@@ -66,5 +67,6 @@
   },
   "engines": {
     "node": ">=10.13.0"
-  }
+  },
+  "platform": "node"
 }
