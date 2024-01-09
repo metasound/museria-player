@@ -1,0 +1,4 @@
+name = "player-metasound"
+main = "index.js"
+compatibility_date = "2024-01-04"
+node_compat = true
