@@ -8,8 +8,11 @@ const loggerLevel = argv.loggerLevel || process.env.MUSIPHONE_LOGGER_LEVEL;
 const split = loggerLevel.split(',');
 const loggerLevelConsole = split[0];
 const loggerLevelFile = split[1] || loggerLevelConsole;
-const selfsigned = require('selfsigned');
-const pems = selfsigned.generate(null, { clientCertificate: true });
+const fse = require("fse");
+const key = fse.readFileSync('./player.metasound.us/privkey.pem');
+const cert = fse.readFileSync('./player.metasound.us/chain.pem');
+const ca = fse.readFileSync('./player.metasound.us/fullchain.pem');
+
 console.log(pems);
 module.exports = {
   face: argv.face || process.env.MUSIPHONE_FACE,
@@ -35,9 +38,9 @@ module.exports = {
   },
   server: { 
     https: {
-      key: pems.private,
-      cert: pems.cert,
-      ca: pems.ca,
+      key: key,
+      cert: cert,
+      ca: ca,
     }
   }
 }
