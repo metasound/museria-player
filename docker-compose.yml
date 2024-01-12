@@ -2,7 +2,7 @@ version: "3"
 services:
   musiphone:
     container_name: musiphone
-    image: ortexx/musiphone
+    image: metasound/musiphone
     restart: on-failure
     env_file:
       ./.env

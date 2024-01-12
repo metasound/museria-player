@@ -1,13 +1,13 @@
 {
-  "name": "museria-player",
+  "name": "museria-player-ms",
   "version": "0.2.32",
-  "description": "Global decentralized music player",
+  "description": "Global decentralized music player for MetaSound",
   "main": "./src/index.js",
   "author": {
-    "name": "Alexander Balasyan",
-    "email": "mywebstreet@gmail.com"
+    "name": "MetaSound",
+    "email": "info@metasound.us"
   },
-  "homepage": "https://github.com/ortexx/museria-player",
+  "homepage": "https://github.com/metasound/museria-player",
   "scripts": {
     "start": "node index.js",
     "face": "node index.js --face=true",
@@ -49,10 +49,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "museria-global": "https://github.com/metasound/museria-global.git",
-    "musiphone": "https://github.com/metasound/musiphone.git",
+    "museria-global-ms": "^0.2.45",
+    "musiphone-ms": "^0.2.33",
     "selfsigned": "^2.4.1",
-    "spreadable": "https://github.com/metasound/spreadable.git"
+    "spreadable-ms": "^0.2.28"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
@@ -63,7 +63,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ortexx/museria-player"
+    "url": "https://github.com/metasound/museria-player"
   },
   "engines": {
     "node": ">=10.13.0"

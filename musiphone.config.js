@@ -2,17 +2,14 @@ const argv = require('yargs').argv;
 const dotenv = require('dotenv');
 const path = require('path');
 const faces = require('./faces');
-const storageFaces = require('museria-global/faces');
+const storageFaces = require('museria-global-ms/faces');
 dotenv.config({ path: path.join(__dirname, '.env') });
 const loggerLevel = argv.loggerLevel || process.env.MUSIPHONE_LOGGER_LEVEL;
 const split = loggerLevel.split(',');
 const loggerLevelConsole = split[0];
 const loggerLevelFile = split[1] || loggerLevelConsole;
-const fse = require("fse");
-const key = fse.readFileSync('./player.metasound.us/privkey.pem');
-const cert = fse.readFileSync('./player.metasound.us/chain.pem');
-const ca = fse.readFileSync('./player.metasound.us/fullchain.pem');
-
+const selfsigned = require('selfsigned');
+const pems = selfsigned.generate(null, { clientCertificate: true });
 console.log(pems);
 module.exports = {
   face: argv.face || process.env.MUSIPHONE_FACE,
@@ -38,9 +35,9 @@ module.exports = {
   },
   server: { 
     https: {
-      key: key,
-      cert: cert,
-      ca: ca,
+      key: pems.private,
+      cert: pems.cert,
+      ca: pems.ca,
     }
   }
 }

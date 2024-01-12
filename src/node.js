@@ -1,5 +1,5 @@
 const Node = require('musiphone/src/node')();
-const LoggerAdapter = require('spreadable/src/logger/transports/adapter')();
+const LoggerAdapter = require('spreadable-ms/src/logger/transports/adapter')();
 
 module.exports = (Parent) => {  
   return class NodeMuseriaPlayer extends (Parent || Node) {
